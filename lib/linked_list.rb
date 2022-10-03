@@ -23,16 +23,14 @@ class LinkedList
   private
 
   def append_next_node(data)
-    tail = false
-    current_node = @head
+    current_node = find_tail
+    current_node.next_node = Node.new(data)
+  end
 
-    until tail
-      if current_node.next_node
-        current_node = current_node.next_node
-      else
-        current_node.next_node = Node.new(data)
-        tail = true
-      end
-    end
+  def find_tail
+    node = @head
+    return node unless node.next_node
+
+    return node unless node.next_node while (node = node.next_node)
   end
 end
