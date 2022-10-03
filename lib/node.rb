@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# linked list for Node
+# Node for linked list
 class Node
   attr_reader :data,
               :next_node
