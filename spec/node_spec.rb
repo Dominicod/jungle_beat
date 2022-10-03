@@ -7,7 +7,7 @@ RSpec.describe Node do
 
   describe 'instantiation' do
     it 'is a instance of Node' do
-      expect(node).to be_an_instance_of Node
+      expect(node).to be_an_instance_of described_class
     end
 
     it 'has correct instance variables' do
