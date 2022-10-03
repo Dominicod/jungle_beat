@@ -25,6 +25,7 @@ RSpec.describe LinkedList do
       expect(list.head.data).to eq 'doop'
 
       list.append('deep')
+
       next_node_data = list.head.next_node.data
       next_node_nn = list.head.next_node.next_node
 

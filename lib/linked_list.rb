@@ -13,11 +13,17 @@ class LinkedList
   end
 
   def count
-    1
+    node = @head
+    counter = 1
+    counter += 1 while (node = node.next_node)
+    counter
   end
 
   def to_string
-    @head.data
+    node = @head
+    string_arr = []
+    string_arr << node.data while (node = node.next_node)
+    string_arr.join(' ')
   end
 
   private
@@ -29,6 +35,7 @@ class LinkedList
 
   def find_tail
     node = @head
+
     return node unless node.next_node
 
     return node unless node.next_node while (node = node.next_node)
