@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './lib/linked_list'
+require './lib/node'
 
 RSpec.describe LinkedList do
   let(:list) { LinkedList.new }
@@ -21,18 +22,22 @@ RSpec.describe LinkedList do
 
       expect(list.head).to be_an_instance_of(Node)
       expect(list.head.next_node).to eq nil
-      expect(list.data).to eq 'doop'
+      expect(list.head.data).to eq 'doop'
     end
   end
 
   describe '.count' do
     it 'returns the count of things in the list' do
+      list.append('doop')
+
       expect(list.count).to eq 1
     end
   end
 
   describe '.to_string' do
     it 'generates a string of all the elements in the list, separated by spaces' do
+      list.append('doop')
+
       expect(list.to_string).to eq 'doop'
     end
   end
