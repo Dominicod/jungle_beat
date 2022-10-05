@@ -12,4 +12,11 @@ RSpec.describe JungleBeat do
       expect(jb).to be_an_instance_of described_class
     end
   end
+
+  describe 'instance variables' do
+    it 'returns correct instance variables' do
+      expect(jb.list).to be_an_instance_of LinkedList
+      expect(jb.list.head).to eq nil
+    end
+  end
 end
