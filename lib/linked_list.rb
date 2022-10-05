@@ -44,23 +44,14 @@ class LinkedList
   private
 
   def insert_node(index, data)
-    node = find_node(index)
+    node = find_node(index, index)
   end
 
-  def find_node(index)
-    node = @head
-    while node
-      return node if node.index_position == index
-
-      node = node.next_node
-    end
-  end
-
-  def find(index1, index2)
+  def find_node(index1, index2)
     node = @head
     return_arr = []
     while node
-      return_arr << node.data if node.index_position >= index1 && node.index_position <= index2
+      return_arr << node if node.index_position >= index1 && node.index_position <= index2
       node = node.next_node
     end
     return_arr
