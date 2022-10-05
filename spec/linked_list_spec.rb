@@ -102,16 +102,27 @@ RSpec.describe LinkedList do
       list.append('fizz')
     end
 
-    it 'returns index position 1 and index position 2 data' do
+    it 'returns the correct index positions' do
       expect(list.find(1, 2)).to eq 'bazz fizz'
-    end
-
-    it 'returns index position 0 and index position 1..2' do
       expect(list.find(0, 2)).to eq 'plop bazz fizz'
     end
 
     it 'returns index position 1 and nothing else if given a single argument' do
       expect(list.find(1)).to eq 'bazz'
+    end
+  end
+
+  describe '.includes?' do
+    before :each do
+      list.append('plop')
+      list.append('bazz')
+      list.append('fizz')
+    end
+
+    it 'returns boolean based on inclusion of data in the list' do
+      expect(list.includes?('plop')).to eq true
+      expect(list.includes?('bazz')).to eq true
+      expect(list.includes?('buzz')).to eq false
     end
   end
 end
