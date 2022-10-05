@@ -17,8 +17,10 @@ class LinkedList
   end
 
   def insert(index, data)
-    prepend_node(data) if index.zero?
-    append(data) if index > count
+    return prepend_node(data) if index.zero?
+
+    return append(data) if index > count
+
     insert_node(index, data)
   end
 
@@ -44,10 +46,16 @@ class LinkedList
   private
 
   def insert_node(index, data)
-    node = find_node(index, index)
+    previous_node = find_node(index - 1).shift
+    current_node = find_node(index).shift
+    new_node = Node.new(data)
+
+    new_node.next_node = current_node
+    previous_node.next_node = new_node
+    set_index
   end
 
-  def find_node(index1, index2)
+  def find_node(index1, index2 = index1)
     node = @head
     return_arr = []
     while node
@@ -67,7 +75,7 @@ class LinkedList
   def append_next_node(data)
     current_node = find_tail
     current_node.next_node = Node.new(data)
-    current_node.next_node.index_position = count
+    set_index
   end
 
   def set_index
