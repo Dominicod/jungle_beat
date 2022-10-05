@@ -31,6 +31,16 @@ class LinkedList
     counter
   end
 
+  def includes?(data)
+    node = @head
+    while node
+      return true if node.data == data
+
+      node = node.next_node
+    end
+    false
+  end
+
   def to_string
     node = @head
     string_arr = []
