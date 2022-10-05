@@ -94,4 +94,24 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq 'plop bazz fizz bloop'
     end
   end
+
+  describe '.find' do
+    before :each do
+      list.append('plop')
+      list.append('bazz')
+      list.append('fizz')
+    end
+
+    it 'returns index position 1 and index position 2 data' do
+      expect(list.find(1, 2)).to eq 'bazz fizz'
+    end
+
+    it 'returns index position 0 and index position 1..2' do
+      expect(list.find(0, 2)).to eq 'plop bazz fizz'
+    end
+
+    it 'returns index position 1 and nothing else if given a single argument' do
+      expect(list.find(1)).to eq 'bazz'
+    end
+  end
 end
