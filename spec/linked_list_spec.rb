@@ -7,7 +7,7 @@ RSpec.describe LinkedList do
   let(:list) { LinkedList.new }
 
   describe 'instantiation' do
-    it 'is a instance of Node' do
+    it 'is a instance of LinkedList' do
       expect(list).to be_an_instance_of described_class
     end
 
