@@ -51,6 +51,13 @@ class LinkedList
     string_arr.join(' ')
   end
 
+  def pop
+    node = find_node(count - 2).shift
+    node_data = node.next_node.data
+    node.next_node = nil
+    node_data
+  end
+
   def find(index1, index2 = index1)
     find_node(index1, index2).map(&:data).join(' ')
   end
