@@ -19,4 +19,26 @@ RSpec.describe JungleBeat do
       expect(jb.list.head).to eq nil
     end
   end
+
+  describe '.append' do
+    it 'appends new nodes to the list' do
+      jb.append('fizz buzz bazz')
+      expect(jb.list.head.data).to eq 'fizz'
+      expect(jb.count).to eq 3
+      expect(jb.list.head.next_node.data).to eq 'buzz'
+
+      jb.append('bloop boop floop')
+      expect(jb.count).to eq 6
+    end
+  end
+
+  describe '.count' do
+    it 'returns the count of elements in the list' do
+      jb.append('fizz buzz bazz')
+      expect(jb.count).to eq 3
+
+      jb.append('fizz')
+      expect(jb.count).to eq 4
+    end
+  end
 end
