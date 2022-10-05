@@ -41,6 +41,10 @@ class LinkedList
     string_arr.join(' ')
   end
 
+  def find(index1, index2 = index1)
+    find_node(index1, index2).map(&:data).join(' ')
+  end
+
   #################################### -> Private Methods
 
   private
