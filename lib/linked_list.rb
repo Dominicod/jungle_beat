@@ -12,6 +12,10 @@ class LinkedList
     @head ? append_next_node(data) : @head = Node.new(data)
   end
 
+  def prepend_node(data)
+    @head ? prepend_head(data) : @head = Node.new(data)
+  end
+
   def count
     node = @head
     counter = 1
@@ -30,6 +34,12 @@ class LinkedList
   end
 
   private
+
+  def prepend_head(data)
+    node = Node.new(data)
+    node.next_node = @head
+    @head = node
+  end
 
   def append_next_node(data)
     current_node = find_tail
