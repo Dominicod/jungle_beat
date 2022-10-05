@@ -125,4 +125,22 @@ RSpec.describe LinkedList do
       expect(list.includes?('buzz')).to eq false
     end
   end
+
+  describe '.pop' do
+    before :each do
+      list.append('plop')
+      list.append('bazz')
+      list.append('fizz')
+    end
+
+    it 'pops off the last element and returns its data value' do
+      expect(list.pop).to eq 'fizz'
+      expect(list.count).to eq 2
+      expect(list.to_string).to eq 'plop bazz'
+
+      expect(list.pop).to eq 'bazz'
+      expect(list.count).to eq 1
+      expect(list.to_string).to eq 'plop'
+    end
+  end
 end
