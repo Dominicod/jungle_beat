@@ -16,6 +16,12 @@ class LinkedList
     @head ? prepend_head(data) : @head = Node.new(data)
   end
 
+  def insert(index, data)
+    prepend_node(data) if index.zero?
+    append(data) if index > count
+    insert_node(index, data)
+  end
+
   def count
     node = @head
     counter = 1
@@ -33,17 +39,54 @@ class LinkedList
     string_arr.join(' ')
   end
 
+  #################################### -> Private Methods
+
   private
+
+  def insert_node(index, data)
+    node = find_node(index)
+  end
+
+  def find_node(index)
+    node = @head
+    while node
+      return node if node.index_position == index
+
+      node = node.next_node
+    end
+  end
+
+  def find(index1, index2)
+    node = @head
+    return_arr = []
+    while node
+      return_arr << node.data if node.index_position >= index1 && node.index_position <= index2
+      node = node.next_node
+    end
+    return_arr
+  end
 
   def prepend_head(data)
     node = Node.new(data)
     node.next_node = @head
     @head = node
+    set_index
   end
 
   def append_next_node(data)
     current_node = find_tail
     current_node.next_node = Node.new(data)
+    current_node.next_node.index_position = count
+  end
+
+  def set_index
+    node = @head
+    index_p = 0
+    while node
+      node.index_position = index_p
+      index_p += 1
+      node = node.next_node
+    end
   end
 
   def find_tail

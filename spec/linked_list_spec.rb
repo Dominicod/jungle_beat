@@ -72,16 +72,26 @@ RSpec.describe LinkedList do
   end
 
   describe '.insert' do
-    it 'inserts a node in the given index position' do
+    before :each do
       list.append('plop')
       list.append('bazz')
       list.append('fizz')
-      expect(list.count).to eq 3
-      expect(list.to_string).to eq 'plop bazz fizz'
+    end
 
+    it 'inserts a node in the given index position' do
       list.insert(1, 'bloop')
       expect(list.count).to eq 4
       expect(list.to_string).to eq 'plop bloop bazz fizz'
+    end
+    it 'inserts a node as head if given index position 0' do
+      list.insert(0, 'bloop')
+      expect(list.count).to eq 4
+      expect(list.to_string).to eq 'bloop plop bazz fizz'
+    end
+    it 'appends a node if given index is out of index range' do
+      list.insert(4, 'bloop')
+      expect(list.count).to eq 4
+      expect(list.to_string).to eq 'plop bazz fizz bloop'
     end
   end
 end
