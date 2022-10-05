@@ -54,4 +54,20 @@ RSpec.describe LinkedList do
       expect(list.to_string).to eq 'doop deep'
     end
   end
+
+  describe '.prepend' do
+    it 'prepends a node at the beginning of the linked list, replacing the head' do
+      list.append('doop')
+      expect(list.count).to eq 1
+      expect(list.to_string).to eq 'doop'
+
+      list.append('plop')
+      expect(list.count).to eq 2
+      expect(list.to_string).to eq 'doop deep'
+
+      list.prepend('bazz')
+      expect(list.count).to eq 3
+      expect(list.to_string).to eq 'bazz doop deep'
+    end
+  end
 end

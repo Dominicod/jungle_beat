@@ -22,7 +22,10 @@ class LinkedList
   def to_string
     node = @head
     string_arr = []
-    string_arr << node.data while (node = node.next_node)
+    while node
+      string_arr << node.data
+      node = node.next_node
+    end
     string_arr.join(' ')
   end
 
